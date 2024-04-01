@@ -51,3 +51,7 @@ jobs:
       with:
         sarif_file: ${{ steps.imagescan.outputs.sarif }}
 
+    - name: Syft SBOM
+      uses: anchore/sbom-action@v0
+      with:
+        image: "cdc/geneflow2:latest"
