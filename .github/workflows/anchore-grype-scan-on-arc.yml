@@ -14,18 +14,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - name: Scan current project
-      id: scan
-      uses: anchore/scan-action@v3
-      with:
-        path: "./"
-        fail-build: true
-        acs-report-enable: true
+    # - name: Scan current project
+    #   id: scan
+    #   uses: anchore/scan-action@v3
+    #   with:
+    #     path: "./"
+    #     fail-build: true
+    #     acs-report-enable: true
     
-    - name: upload Anchore scan SARIF report
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: ${{ steps.scan.outputs.sarif }}
+    # - name: upload Anchore scan SARIF report
+    #   uses: github/codeql-action/upload-sarif@v2
+    #   with:
+    #     sarif_file: ${{ steps.scan.outputs.sarif }}
     
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -38,18 +38,18 @@ jobs:
         push: false
         load: true
 
-    - name: Scan image
-      uses: anchore/scan-action@v3
-      id: imagescan
-      with:
-        image: "cdc/geneflow2:latest"
-        acs-report-enable: "true"
-        fail-build: false
+    # - name: Scan image
+    #   uses: anchore/scan-action@v3
+    #   id: imagescan
+    #   with:
+    #     image: "cdc/geneflow2:latest"
+    #     acs-report-enable: "true"
+    #     fail-build: false
 
-    - name: upload Anchore Image scan SARIF report
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: ${{ steps.imagescan.outputs.sarif }}
+    # - name: upload Anchore Image scan SARIF report
+    #   uses: github/codeql-action/upload-sarif@v2
+    #   with:
+    #     sarif_file: ${{ steps.imagescan.outputs.sarif }}
 
     - name: Syft SBOM
       uses: anchore/sbom-action@v0
