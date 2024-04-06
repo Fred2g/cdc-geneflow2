@@ -32,8 +32,9 @@ jobs:
         image: cdc/geneflow2
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tag: v1
         build_file: ./docker/Dockerfile
+        cache: true
+        cache_registry: aevea/cache
 
 # jobs:
 #   anchore_scan_job:
