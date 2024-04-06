@@ -6,20 +6,32 @@ on:
 
 permissions: write-all
 jobs: 
-  build: 
-    name: Build image 
+  # buildah-build: 
+  #   name: builda-build 
+  #   runs-on: arc-runner-set 
+  #   steps: 
+  #   - uses: actions/checkout@v3 
+  #   - name: Buildah Action 
+  #     uses: redhat-actions/buildah-build@v2 
+  #     with: 
+  #       image: cdc/geneflow2
+  #       tags: v1 ${{ github.sha }} 
+  #       containerfiles: | 
+  #         ./docker/Dockerfile
+  #       # build-args: | 
+  #       #   some_arg=some_value
+
+  kaniko-build: 
+    name: builda-build 
     runs-on: arc-runner-set 
     steps: 
     - uses: actions/checkout@v3 
-    - name: Buildah Action 
-      uses: redhat-actions/buildah-build@v2 
+    - name: build action
+      uses: aevea/action-kaniko@master
       with: 
         image: cdc/geneflow2
-        tags: v1 ${{ github.sha }} 
-        containerfiles: | 
-          ./docker/Dockerfile
-        # build-args: | 
-        #   some_arg=some_value
+        tag: v1 ${{ github.sha }} 
+        build_file: ./docker/Dockerfile
 
 # jobs:
 #   anchore_scan_job:
