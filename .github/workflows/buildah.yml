@@ -1,0 +1,21 @@
+name: image-build-with-arc_buildah
+
+on:
+  workflow_dispatch:
+
+permissions: write-all
+jobs: 
+  build: 
+    name: build 
+    runs-on: arc-runner-set 
+    steps: 
+    - uses: actions/checkout@v3 
+    - name: Buildah Action 
+      uses: redhat-actions/buildah-build@v2 
+      with: 
+        image: cdc/geneflow2
+        tags: v1 ${{ github.sha }} 
+        containerfiles: | 
+          ./docker/Dockerfile
+        # build-args: | 
+        #   some_arg=some_value
