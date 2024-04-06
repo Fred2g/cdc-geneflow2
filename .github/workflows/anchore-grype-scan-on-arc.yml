@@ -9,14 +9,14 @@ permissions: write-all
 jobs:
   anchore_scan_job:
     runs-on: arc-runner-set #ubuntu-latest
-    name: Anchore grype security scan
+    name: Anchore grype security scan on ARC
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     
     - name: Scan current project
       id: scan
-      uses: anchore/scan-action@v2
+      uses: anchore/scan-action
       with:
         path: "./"
         fail-build: true
