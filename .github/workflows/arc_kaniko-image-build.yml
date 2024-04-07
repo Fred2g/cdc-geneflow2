@@ -1,4 +1,4 @@
-name: image-build-with-arc
+name: arc_kaniko-image-build
 
 on:
   # Configure Manual Trigger
@@ -6,23 +6,8 @@ on:
 
 permissions: write-all
 jobs: 
-  # buildah-build: 
-  #   name: builda-build 
-  #   runs-on: arc-runner-set 
-  #   steps: 
-  #   - uses: actions/checkout@v3 
-  #   - name: Buildah Action 
-  #     uses: redhat-actions/buildah-build@v2 
-  #     with: 
-  #       image: cdc/geneflow2
-  #       tags: v1 ${{ github.sha }} 
-  #       containerfiles: | 
-  #         ./docker/Dockerfile
-  #       # build-args: | 
-  #       #   some_arg=some_value
-
   kaniko-build: 
-    name: builda-build 
+    name: build 
     runs-on: arc-runner-set 
     steps: 
     - uses: actions/checkout@v3 
