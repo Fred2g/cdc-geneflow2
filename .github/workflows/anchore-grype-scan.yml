@@ -1,10 +1,10 @@
 name: anchore-grype-scanning
 
-on:
+on: [push, pull_request]
   # Configure Manual Trigger
-  workflow_dispatch:
+ #workflow_dispatch:
 
-permissions: write-all
+#permissions: write-all
 
 jobs:
   anchore_scan_job:
