@@ -8,7 +8,7 @@ permissions: write-all
 
 jobs:
   anchore_scan_job:
-    runs-on: arc-runner-set
+    runs-on: arc-runner-set-3
     name: Anchore grype security scan
     steps:
     - name: Checkout
