@@ -13,7 +13,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-   
+      
+    - name: Install libcurl4-openssl-dev 
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev -y
+        sudo apt install build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev jq -y wget
+        
     - name: Scan current project
       id: scan
       uses: anchore/scan-action@v2
