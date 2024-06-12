@@ -8,7 +8,7 @@ on: [push, pull_request]
 
 jobs:
   anchore_scan_job:
-    runs-on: arc-runner-set-new-2
+    runs-on: arc-runner-set-cdc-new-2
     name: Anchore grype security scan
     steps:
     - name: Checkout
